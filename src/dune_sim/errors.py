@@ -17,8 +17,8 @@ __all__ = [
     "AuthenticationError",
     "BadRequestError",
     "DuneSimError",
+    "ForbiddenError",
     "NotFoundError",
-    "PermissionError",
     "QuotaExceededError",
     "RateLimitError",
     "ServerError",
@@ -62,7 +62,7 @@ class QuotaExceededError(APIError):
     """Raised on HTTP 402 - the account quota has been exhausted."""
 
 
-class PermissionError(APIError):
+class ForbiddenError(APIError):
     """Raised on HTTP 403 - the API key lacks Sim API permissions."""
 
 
@@ -98,7 +98,7 @@ _STATUS_MAP = {
     400: BadRequestError,
     401: AuthenticationError,
     402: QuotaExceededError,
-    403: PermissionError,
+    403: ForbiddenError,
     404: NotFoundError,
     429: RateLimitError,
 }

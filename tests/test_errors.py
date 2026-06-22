@@ -7,8 +7,8 @@ from dune_sim.errors import (
     APIError,
     AuthenticationError,
     DuneSimError,
+    ForbiddenError,
     NotFoundError,
-    PermissionError,
     QuotaExceededError,
     RateLimitError,
     ServerError,
@@ -46,8 +46,8 @@ def test_402_raises_quota_exceeded_error():
         raise_for_status(_response(402, json={"error": "quota exceeded"}))
 
 
-def test_403_raises_permission_error():
-    with pytest.raises(PermissionError):
+def test_403_raises_forbidden_error():
+    with pytest.raises(ForbiddenError):
         raise_for_status(_response(403, json={"error": "forbidden"}))
 
 
